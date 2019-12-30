@@ -2,7 +2,7 @@
 
 ### Explicação
 Video com a explicação completa no meu canal do Youtube: 
-- https://www.youtube.com/watch?v=
+- https://www.youtube.com/watch?v=ku-6pFTQ6D0
 
 [![Video com a explicação](https://img.youtube.com/vi/ku-6pFTQ6D0/0.jpg)](https://www.youtube.com/watch?v=ku-6pFTQ6D0)
 
