@@ -1,0 +1,1 @@
+# godot3.2_compilarmodulo
