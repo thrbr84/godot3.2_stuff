@@ -4,7 +4,7 @@
 Video com a explicação completa no meu canal do Youtube: 
 - https://www.youtube.com/watch?v=
 
-[![Video com a explicação](https://img.youtube.com/vi//0.jpg)](https://www.youtube.com/watch?v=)
+[![Video com a explicação](https://img.youtube.com/vi/ku-6pFTQ6D0/0.jpg)](https://www.youtube.com/watch?v=ku-6pFTQ6D0)
 
 
 Se ainda não viu o vídeo anterior, onde mostro os primeiros passos para montar o ambiente android no Ubuntu 18, veja pelo link abaixo:
