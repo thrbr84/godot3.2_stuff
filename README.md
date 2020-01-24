@@ -20,6 +20,9 @@ https://www.youtube.com/watch?v=Exm2Em4P_nk
 ----------
 
 ### (3) CONFIGURAR OS MÓDULOS QUE FOR USAR (pode usar todos):
+#### GodotCamera
+- Veja as configurações necessárias dentro do README que está no diretório GodotCamera
+
 #### AdMod
 - Criar conta em: https://www.google.com/intl/pt_br/admob/
 - Configurar os módulos com os IDs dos seus banners
