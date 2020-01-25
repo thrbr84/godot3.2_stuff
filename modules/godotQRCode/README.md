@@ -13,9 +13,9 @@ org/godotengine/godot/godotQRCode
 
 
 Video com a explicação completa no meu canal do Youtube: 
-- https://www.youtube.com/watch?v=
+- https://www.youtube.com/watch?v=Kq5MisDO26s
 
-[![Video demonstração](https://img.youtube.com/vi//0.jpg)](https://www.youtube.com/watch?v=)
+[![Video demonstração](https://img.youtube.com/vi/Kq5MisDO26s/0.jpg)](https://www.youtube.com/watch?v=Kq5MisDO26s)
 
 
 
@@ -57,7 +57,9 @@ android:authorities="com.thiagobruno.godotqrcode"
 
 ### TODO
 -------------
-- AI / Face detect, recognize
+- Preview camera inside godot
+- Preview with mask
+- Crop and adjust de captured qrcode
 
 ### Exportar
 -------------
