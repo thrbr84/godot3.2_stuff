@@ -20,6 +20,9 @@ https://www.youtube.com/watch?v=Exm2Em4P_nk
 ----------
 
 ### (3) CONFIGURAR OS MÓDULOS QUE FOR USAR (pode usar todos):
+#### GodotQRCode
+- Veja as configurações necessárias dentro do README que está no diretório GodotQRCode
+
 #### GodotCamera
 - Veja as configurações necessárias dentro do README que está no diretório GodotCamera
 
