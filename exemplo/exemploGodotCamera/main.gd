@@ -1,39 +1,59 @@
 extends Node2D
 
-var camera = null
+onready var nativeCamera = $picture/nativeCamera
+var facing = false
+var is_open = true
 
 func _ready():
-	if(Engine.has_singleton("GodotCamera")):
-		camera = Engine.get_singleton("GodotCamera")
-		if camera:
-			camera.setCameraCallbackId(get_instance_id())
+	nativeCamera.connect("picture_taken", self, "on_picture_taken")
+	
+func _on_btnTakePicture_pressed():
+	$picture/anim.play_backwards("open")
+	if nativeCamera.camera:
+		nativeCamera.take_picture()
 
-func _on_Button_pressed():
-	# reset image
+func _on_btnOpenNativeCam_pressed():
+	_reset()
+	if nativeCamera.camera and !is_open:
+		nativeCamera.camera.setImageSize(628) # width / height ascpect ratio
+		nativeCamera.camera.setImageRotated(90) # rotation
+		nativeCamera.camera.openCamera()
+
+func _on_btnPreview_pressed():
+	if !nativeCamera.camera:
+		nativeCamera._initialize()
+	
+	yield(get_tree().create_timer(1), "timeout")
+	if nativeCamera.camera: 
+		is_open = true
+		nativeCamera.set_view_visibilty(true)
+		$picture/anim.play("open")
+
+func on_picture_taken(error, image_texture, extras):
+	if nativeCamera.camera:
+		if error == nativeCamera.ERROR.NONE:
+			$picture.texture = image_texture
+			
+	$picture/anim.play_backwards("open")
+	is_open = false
+	nativeCamera.set_view_visibilty(false)
+
+func _reset():
 	$picture.texture = ResourceLoader.load("res://camera.png")
-	
-	if camera:
-		# open native preview camera
-		camera.setImageSize(628) # width / height ascpect ratio
-		camera.setImageRotated(90) # rotation
-		camera.openCamera()
+	is_open = false
+	nativeCamera.set_view_visibilty(false)
 
-func _base64texture(image64):
-	var image = Image.new()
-	image.load_png_from_buffer(Marshalls.base64_to_raw(image64))
-	var texture = ImageTexture.new()
-	texture.create_from_image(image)
-	return texture
+func _on_btnTakePicture3_pressed():
+	if nativeCamera.camera:
+		nativeCamera.set_camera_facing(facing)
+		facing = !facing
+		
+		if facing:
+			$picture/nativeCamera/btnTakePicture3.text = "B" #back
+		else:
+			$picture/nativeCamera/btnTakePicture3.text = "F" #front
 
-func _on_GodotCamera_success(_fileName):
-	# photo taken
-	$picture.texture = _base64texture(_fileName)
-
-func _on_Reset_pressed():
-	$picture.texture = ResourceLoader.load("res://camera.png")
-	
-func _input(event):
-	if event is InputEventScreenDrag:
-		$picture.rect_position.x = event.position.x - ($picture.rect_size.x/2)
-		$picture.rect_position.y = event.position.y - ($picture.rect_size.y/2)
-	
+func _on_btnTakePicture2_pressed():
+	if nativeCamera.camera:
+		$picture/anim.play_backwards("open")
+		_reset()

@@ -19,7 +19,7 @@ modules="org/godotengine/godot/GodotCamera"
 
 [application]
 
-config/name="exemploFacebook"
+config/name="exemploGodotCamera"
 run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
 
