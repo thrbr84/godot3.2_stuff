@@ -1,0 +1,97 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/main.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[node name="main" type="Control"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="connection" type="Button" parent="."]
+margin_left = 136.913
+margin_top = 462.208
+margin_right = 279.913
+margin_bottom = 492.208
+rect_scale = Vector2( 3, 3 )
+toggle_mode = true
+text = "Connect"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="op_1" type="Button" parent="." groups=[
+"btn_opt",
+]]
+margin_left = 136.913
+margin_top = 858.208
+margin_right = 279.913
+margin_bottom = 888.208
+rect_scale = Vector2( 3, 3 )
+toggle_mode = true
+text = "Option 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="led" type="ColorRect" parent="op_1"]
+margin_left = 117.0
+margin_top = 4.0
+margin_right = 137.0
+margin_bottom = 24.0
+color = Color( 0.231373, 0.823529, 0.0666667, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="op_2" type="Button" parent="." groups=[
+"btn_opt",
+]]
+margin_left = 136.913
+margin_top = 1008.21
+margin_right = 279.913
+margin_bottom = 1038.21
+rect_scale = Vector2( 3, 3 )
+toggle_mode = true
+text = "Option 2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="led" type="ColorRect" parent="op_2"]
+margin_left = 117.0
+margin_top = 4.0
+margin_right = 137.0
+margin_bottom = 24.0
+color = Color( 0.823529, 0.0784314, 0.0666667, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 720.0
+margin_bottom = 300.0
+color = Color( 0.0392157, 0.239216, 0.568627, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="."]
+position = Vector2( 360, 145.92 )
+scale = Vector2( 0.569874, 0.569874 )
+texture = ExtResource( 2 )
+
+[node name="container" type="VBoxContainer" parent="."]
+margin_left = 131.442
+margin_top = 591.042
+margin_right = 575.442
+margin_bottom = 920.042
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="toggled" from="connection" to="." method="_on_connection_toggled"]
+[connection signal="pressed" from="op_1" to="." method="_on_op_1_pressed"]
+[connection signal="toggled" from="op_1" to="." method="_on_op_1_toggled"]
+[connection signal="toggled" from="op_2" to="." method="_on_op_2_toggled"]

@@ -20,11 +20,14 @@ https://www.youtube.com/watch?v=Exm2Em4P_nk
 ----------
 
 ### (3) CONFIGURAR OS MÓDULOS QUE FOR USAR (pode usar todos):
-#### GodotQRCode
+#### GodotQRCode [WIP]
 - Veja as configurações necessárias dentro do README que está no diretório GodotQRCode
 
-#### GodotCamera
+#### GodotCamera [WIP]
 - Veja as configurações necessárias dentro do README que está no diretório GodotCamera
+
+#### GodotBluetooth [WIP]
+- Veja as configurações necessárias dentro do README que está no diretório GodotBluetooth
 
 #### AdMod
 - Criar conta em: https://www.google.com/intl/pt_br/admob/
@@ -47,10 +50,11 @@ https://www.youtube.com/watch?v=Exm2Em4P_nk
 ```org/godotengine/godot/GooglePlay,org/godotengine/godot/SQLBridge,org/godotengine/godot/GodotFacebook,org/godotengine/godot/GodotAdMob```
 
 # Referência
-Baseado no trabalho de: 
+Alguns módulos foram customizados e modificados baseados nos trabalhos dos autores:
 - https://github.com/Shin-NiL/godot-admob
 - https://github.com/DrMoriarty/godot-facebook
 - https://github.com/FrogSquare/GodotGoogleService
+- https://github.com/favarete/GodotBluetooth
 
 # IDs para teste do ADMob
 - https://developers.google.com/admob/android/test-ads
