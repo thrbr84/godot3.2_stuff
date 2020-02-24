@@ -23,6 +23,9 @@ https://www.youtube.com/watch?v=Exm2Em4P_nk
 #### GodotGPS
 - Veja as configurações necessárias dentro do README que está no diretório [GodotGps](modules/godotgps/)
 
+#### GodotNFC [WIP] ```em desenvolvimento```
+- Veja as configurações necessárias dentro do README que está no diretório [GodotNfc](modules/godotNfc/)
+
 #### GodotQRCode [WIP]
 - Veja as configurações necessárias dentro do README que está no diretório [GodotQRCode](modules/godotQRCode)
 
