@@ -32,6 +32,7 @@ import android.graphics.Rect;
 import android.graphics.BitmapFactory;
 import android.graphics.ImageDecoder;
 import androidx.core.content.FileProvider;
+//import android.support.v4.content.FileProvider;
 import android.graphics.Matrix;
 
 public class GodotCamera extends Godot.SingletonBase {

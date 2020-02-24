@@ -25,6 +25,13 @@ Video com a explicação completa no meu canal do Youtube:
 ### Configurações
 -------------
 
+- Após instalar o  modelo de compilação android, edite o arquivo: ```res://android/build/gradle.properties``` e acrescente no fim do arquivo essas duas linhas:
+```bash
+android.useAndroidX=true
+android.enableJetifier=true
+```
+
+
 - Dentro do diretório do módulo "godotCamera/src" alterar o arquivo "GodotCamera.java" onde consta ```com.thiagobruno.godotcamera``` pelo id da sua aplicação!
 
 ```

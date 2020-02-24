@@ -5,6 +5,7 @@ var facing = false
 var is_open = true
 
 func _ready():
+	OS.request_permissions()
 	nativeCamera.connect("picture_taken", self, "on_picture_taken")
 	
 func _on_btnTakePicture_pressed():
@@ -15,7 +16,7 @@ func _on_btnTakePicture_pressed():
 func _on_btnOpenNativeCam_pressed():
 	_reset()
 	if nativeCamera.camera and !is_open:
-		nativeCamera.camera.setImageSize(628) # width / height ascpect ratio
+		nativeCamera.camera.setImageSize(300) # width / height ascpect ratio
 		nativeCamera.camera.setImageRotated(90) # rotation
 		nativeCamera.camera.openCamera()
 

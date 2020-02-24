@@ -1,0 +1,242 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/main.gd" type="Script" id=1]
+[ext_resource path="res://gps.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/LIONELLORegular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://gmaps.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 35
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 3 )
+
+[node name="main" type="Control"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 720.0
+margin_bottom = 300.0
+color = Color( 0.152941, 0.545098, 0.211765, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="ColorRect"]
+position = Vector2( 365.831, 148.469 )
+scale = Vector2( 0.455899, 0.455899 )
+texture = ExtResource( 2 )
+
+[node name="nodeGps" type="Node2D" parent="ColorRect"]
+position = Vector2( 228.815, 38.4142 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="led" type="ColorRect" parent="ColorRect/nodeGps"]
+margin_left = 500.842
+margin_top = 218.915
+margin_right = 540.842
+margin_bottom = 258.915
+color = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="isgps" type="Label" parent="ColorRect/nodeGps"]
+margin_left = 273.0
+margin_top = 225.376
+margin_right = 488.0
+margin_bottom = 259.376
+custom_fonts/font = SubResource( 1 )
+text = "gps"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="nodeNetwork" type="Node2D" parent="ColorRect"]
+position = Vector2( 228.815, -9.58582 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="led" type="ColorRect" parent="ColorRect/nodeNetwork"]
+margin_left = 500.842
+margin_top = 218.915
+margin_right = 540.842
+margin_bottom = 258.915
+color = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="isnetworking" type="Label" parent="ColorRect/nodeNetwork"]
+margin_left = 273.0
+margin_top = 225.376
+margin_right = 488.0
+margin_bottom = 259.376
+custom_fonts/font = SubResource( 1 )
+text = "network"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbox" type="VBoxContainer" parent="."]
+margin_left = 90.8829
+margin_top = 545.298
+margin_right = 130.883
+margin_bottom = 585.298
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="init" type="Control" parent="vbox"]
+margin_right = 40.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 70 )
+
+[node name="label" type="Label" parent="vbox/init"]
+margin_right = 507.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 2 )
+text = "Init..."
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="latitude" type="Control" parent="vbox"]
+margin_top = 74.0
+margin_right = 40.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 0, 70 )
+
+[node name="label" type="Label" parent="vbox/latitude"]
+margin_right = 507.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 2 )
+text = "Init..."
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="longitude" type="Control" parent="vbox"]
+margin_top = 148.0
+margin_right = 40.0
+margin_bottom = 218.0
+rect_min_size = Vector2( 0, 70 )
+
+[node name="label" type="Label" parent="vbox/longitude"]
+margin_right = 507.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 2 )
+text = "Init..."
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="altitude" type="Control" parent="vbox"]
+margin_top = 222.0
+margin_right = 40.0
+margin_bottom = 292.0
+rect_min_size = Vector2( 0, 70 )
+
+[node name="label" type="Label" parent="vbox/altitude"]
+margin_right = 507.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 2 )
+text = "Init..."
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gpstime" type="Control" parent="vbox"]
+margin_top = 296.0
+margin_right = 40.0
+margin_bottom = 366.0
+rect_min_size = Vector2( 0, 70 )
+
+[node name="label" type="Label" parent="vbox/gpstime"]
+margin_right = 507.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 2 )
+text = "Init..."
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="speed" type="Control" parent="vbox"]
+margin_top = 370.0
+margin_right = 40.0
+margin_bottom = 440.0
+rect_min_size = Vector2( 0, 70 )
+
+[node name="label" type="Label" parent="vbox/speed"]
+margin_right = 507.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 2 )
+text = "Init..."
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bearing" type="Control" parent="vbox"]
+margin_top = 444.0
+margin_right = 40.0
+margin_bottom = 514.0
+rect_min_size = Vector2( 0, 70 )
+
+[node name="label" type="Label" parent="vbox/bearing"]
+margin_right = 507.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 2 )
+text = "Init..."
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="accuracy" type="Control" parent="vbox"]
+margin_top = 518.0
+margin_right = 40.0
+margin_bottom = 588.0
+rect_min_size = Vector2( 0, 70 )
+
+[node name="label" type="Label" parent="vbox/accuracy"]
+margin_right = 507.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 2 )
+text = "Init..."
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnTrack" type="Button" parent="."]
+margin_left = 163.589
+margin_top = 358.988
+margin_right = 564.589
+margin_bottom = 459.988
+custom_fonts/font = SubResource( 3 )
+text = "TRACK"
+
+[node name="btnGoogleMaps" type="TouchScreenButton" parent="."]
+position = Vector2( 599.284, 362.335 )
+scale = Vector2( 0.168171, 0.168171 )
+normal = ExtResource( 4 )
+[connection signal="pressed" from="btnTrack" to="." method="_on_btnTrack_pressed"]
+[connection signal="pressed" from="btnGoogleMaps" to="." method="_on_btnGoogleMaps_pressed"]

@@ -5,15 +5,15 @@
 [ext_resource path="res://font/PoetsenOne-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 40
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=2]
 size = 40
 font_data = ExtResource( 3 )
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id=3]
 script/source = "extends Control
 
 export var draw_camera_splash = true setget set_draw_camera_splash
@@ -58,7 +58,6 @@ enum ERROR {
 signal picture_taken(_cameraError, _texture, _faces)
 
 const ParameterSerializer = preload(\"res://parameter_serializer.gd\")
-
 
 func _initialize():
 	if camera: return
@@ -228,12 +227,11 @@ func set_color_effect(value):
 	pass
 "
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 50
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "open"
+[sub_resource type="Animation" id=5]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("../btnOpenNativeCam:visible")
@@ -304,7 +302,7 @@ margin_left = 25.0
 margin_top = 1142.0
 margin_right = 690.0
 margin_bottom = 1247.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "Open Native Camera"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -320,7 +318,7 @@ margin_left = 25.0
 margin_top = 1021.11
 margin_right = 690.0
 margin_bottom = 1126.11
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 text = "Open Preview"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -328,13 +326,14 @@ __meta__ = {
 
 [node name="icon" type="Sprite" parent="btnPreview"]
 position = Vector2( 58.4241, 51.9675 )
+scale = Vector2( 0.142521, 0.142521 )
 texture = ExtResource( 4 )
 
 [node name="picture" type="TextureRect" parent="."]
-margin_left = 105.21
-margin_top = 225.571
-margin_right = 625.21
-margin_bottom = 745.571
+margin_left = 99.8793
+margin_top = 417.725
+margin_right = 619.879
+margin_bottom = 937.725
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
@@ -343,22 +342,24 @@ __meta__ = {
 }
 
 [node name="nativeCamera" type="Control" parent="picture"]
-margin_left = -76.0
-margin_top = -36.0
-margin_right = 591.0
-margin_bottom = 562.0
-script = SubResource( 1 )
+margin_left = -57.6804
+margin_top = -68.4955
+margin_right = 570.32
+margin_bottom = 559.505
+script = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+pinch_to_zoom = false
+face_recognition = false
 
 [node name="btnTakePicture" type="Button" parent="picture/nativeCamera"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 190.0
-margin_top = 616.0
-margin_right = 488.0
-margin_bottom = 780.0
-custom_fonts/font = SubResource( 5 )
+margin_left = 170.68
+margin_top = 531.916
+margin_right = 468.68
+margin_bottom = 645.916
+custom_fonts/font = SubResource( 4 )
 text = "Picture"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -366,10 +367,10 @@ __meta__ = {
 
 [node name="btnTakePicture2" type="Button" parent="picture/nativeCamera"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 523.703
-margin_top = 655.7
-margin_right = 551.703
-margin_bottom = 683.7
+margin_left = 504.383
+margin_top = 546.616
+margin_right = 532.383
+margin_bottom = 574.616
 rect_scale = Vector2( 3, 3 )
 text = "X"
 __meta__ = {
@@ -378,10 +379,10 @@ __meta__ = {
 
 [node name="btnTakePicture3" type="Button" parent="picture/nativeCamera"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 67.8971
-margin_top = 650.4
-margin_right = 95.8971
-margin_bottom = 678.4
+margin_left = 48.5775
+margin_top = 541.316
+margin_right = 76.5775
+margin_bottom = 569.316
 rect_scale = Vector2( 3, 3 )
 text = "F"
 __meta__ = {
@@ -389,7 +390,20 @@ __meta__ = {
 }
 
 [node name="anim" type="AnimationPlayer" parent="picture"]
-anims/open = SubResource( 2 )
+anims/open = SubResource( 5 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 720.0
+margin_bottom = 300.0
+color = Color( 0.741176, 0.72549, 0.113725, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="ColorRect"]
+position = Vector2( 347.842, 151.424 )
+scale = Vector2( 0.553588, 0.553588 )
+texture = ExtResource( 4 )
 [connection signal="pressed" from="btnOpenNativeCam" to="." method="_on_btnOpenNativeCam_pressed"]
 [connection signal="pressed" from="btnPreview" to="." method="_on_btnPreview_pressed"]
 [connection signal="pressed" from="picture/nativeCamera/btnTakePicture" to="." method="_on_btnTakePicture_pressed"]

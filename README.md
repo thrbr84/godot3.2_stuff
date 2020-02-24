@@ -20,14 +20,17 @@ https://www.youtube.com/watch?v=Exm2Em4P_nk
 ----------
 
 ### (3) CONFIGURAR OS MÓDULOS QUE FOR USAR (pode usar todos):
+#### GodotGPS
+- Veja as configurações necessárias dentro do README que está no diretório [GodotGps](modules/godotgps/)
+
 #### GodotQRCode [WIP]
-- Veja as configurações necessárias dentro do README que está no diretório GodotQRCode
+- Veja as configurações necessárias dentro do README que está no diretório [GodotQRCode](modules/godotQRCode)
 
 #### GodotCamera [WIP]
-- Veja as configurações necessárias dentro do README que está no diretório GodotCamera
+- Veja as configurações necessárias dentro do README que está no diretório [GodotCamera](modules/godotCamera)
 
 #### GodotBluetooth [WIP]
-- Veja as configurações necessárias dentro do README que está no diretório GodotBluetooth
+- Veja as configurações necessárias dentro do README que está no diretório [GodotBluetooth](modules/godotBluetooth)
 
 #### AdMod
 - Criar conta em: https://www.google.com/intl/pt_br/admob/
