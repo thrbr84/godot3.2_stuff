@@ -331,9 +331,9 @@ texture = ExtResource( 4 )
 
 [node name="picture" type="TextureRect" parent="."]
 margin_left = 99.8793
-margin_top = 417.725
+margin_top = 374.464
 margin_right = 619.879
-margin_bottom = 937.725
+margin_bottom = 894.464
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
@@ -342,10 +342,10 @@ __meta__ = {
 }
 
 [node name="nativeCamera" type="Control" parent="picture"]
-margin_left = -57.6804
-margin_top = -68.4955
-margin_right = 570.32
-margin_bottom = 559.505
+margin_left = -7.0
+margin_top = -39.6301
+margin_right = 520.0
+margin_bottom = 487.37
 script = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -355,10 +355,10 @@ face_recognition = false
 
 [node name="btnTakePicture" type="Button" parent="picture/nativeCamera"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 170.68
-margin_top = 531.916
-margin_right = 468.68
-margin_bottom = 645.916
+margin_left = 116.605
+margin_top = 546.336
+margin_right = 414.605
+margin_bottom = 660.336
 custom_fonts/font = SubResource( 4 )
 text = "Picture"
 __meta__ = {
@@ -367,10 +367,10 @@ __meta__ = {
 
 [node name="btnTakePicture2" type="Button" parent="picture/nativeCamera"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 504.383
-margin_top = 546.616
-margin_right = 532.383
-margin_bottom = 574.616
+margin_left = 450.308
+margin_top = 561.036
+margin_right = 478.308
+margin_bottom = 589.036
 rect_scale = Vector2( 3, 3 )
 text = "X"
 __meta__ = {
@@ -379,10 +379,10 @@ __meta__ = {
 
 [node name="btnTakePicture3" type="Button" parent="picture/nativeCamera"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 48.5775
-margin_top = 541.316
-margin_right = 76.5775
-margin_bottom = 569.316
+margin_left = -5.49781
+margin_top = 555.736
+margin_right = 22.5022
+margin_bottom = 583.736
 rect_scale = Vector2( 3, 3 )
 text = "F"
 __meta__ = {
