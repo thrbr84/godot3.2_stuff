@@ -1,4 +1,4 @@
-# Compilar Módulo: Godot 3.2
+# Compilar Módulo: Godot 3.2.1
 
 ### Explicação
 Video com a explicação completa no meu canal do Youtube: 
@@ -35,7 +35,7 @@ https://www.youtube.com/watch?v=Exm2Em4P_nk
 #### GodotBluetooth [WIP]
 - Veja as configurações necessárias dentro do README que está no diretório [GodotBluetooth](modules/godotBluetooth)
 
-#### AdMod
+#### AdMod (Somente versão da Godot 3.2.1)
 - Criar conta em: https://www.google.com/intl/pt_br/admob/
 - Configurar os módulos com os IDs dos seus banners
 - Colocar nas propriedades do projeto: ```org/godotengine/godot/GodotAdMob```
