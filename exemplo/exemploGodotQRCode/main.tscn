@@ -42,12 +42,25 @@ __meta__ = {
 
 [node name="qrcode" type="Label" parent="."]
 margin_left = 29.0
-margin_top = 206.0
+margin_top = 259.0
 margin_right = 162.0
-margin_bottom = 266.0
+margin_bottom = 308.0
 rect_scale = Vector2( 5, 5 )
 text = "..."
 align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="error" type="Label" parent="."]
+margin_left = 29.0
+margin_top = 171.0
+margin_right = 256.0
+margin_bottom = 198.0
+rect_scale = Vector2( 3, 3 )
+align = 1
+valign = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false

@@ -1,4 +1,4 @@
-// Author: Thiago Bruno (thiago.bruno@birdy.studio)
+// Author: Thiago Bruno (message@thiagobruno.eti.br)
 // https://github.com/thiagobruno/godot3.2_compilarmodulo
 
 package org.godotengine.godot;
@@ -6,80 +6,45 @@ package org.godotengine.godot;
 import android.util.Log;
 import java.io.*;
 import java.util.Date;
-import java.util.Hashtable;
-import android.util.Base64;
-import java.text.SimpleDateFormat;
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.graphics.Bitmap; 
-import android.graphics.BitmapFactory;
-import android.graphics.ImageDecoder;
-import androidx.core.content.FileProvider;
+import java.util.Hashtable;
+import android.util.Base64;
 import android.graphics.Matrix;
-
-import com.google.zxing.BinaryBitmap;
-import com.google.zxing.ChecksumException;
-import com.google.zxing.FormatException;
-import com.google.zxing.MultiFormatReader; //found via import at compile time, however was found at run time 
-import com.google.zxing.NotFoundException;
-import com.google.zxing.LuminanceSource;
-import com.google.zxing.RGBLuminanceSource;//found via import at compile time, however was found at run time 
-import com.google.zxing.Reader;
-import com.google.zxing.Result;
-import com.google.zxing.common.HybridBinarizer;
-
+import android.graphics.Bitmap; 
+import androidx.core.content.FileProvider;
 import com.google.zxing.BarcodeFormat;
-import com.google.zxing.EncodeHintType;
-import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.DecodeHintType;
+import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.common.BitMatrix;
+import com.google.zxing.integration.android.IntentIntegrator;
+
 
 public class GodotQRCode extends Godot.SingletonBase {
 	private static final String TAG = "godot";
 	private String aplicationId = "com.thiagobruno.godotqrcode";
 	private static Activity activity;
 	private Integer cameraCallbackId = 0;
-	private static File cameraPathFile;
 
 	static final int REQUEST_IMAGE_CAPTURE = 1;
-	private Bitmap mImageBitmap;
-	private String currentPhotoPath;
 	private int degreeRotation = 0;
 	private int codeSize = 200;
-	private String cleanImage;
+	private String title = "Scan QR Code";
 
 	private static final int WHITE = 0xFFFFFFFF;
 	private static final int BLACK = 0xFF000000;
 
 	public void scanCode()
 	{
-		Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-		// Ensure that there's a camera activity to handle the intent
-		if (takePictureIntent.resolveActivity(activity.getPackageManager()) != null) {
-		    // Create the File where the photo should go
-		    File photoFile = null;
-		    try {
-			photoFile = createImageFile();
-			
-		    } catch (IOException ex) {
-			// Error occurred while creating the File
-			Log.d(TAG, "Ocorreu um erro ao criar o arquivo de foto. Verifique as permissões!");
-		    }
-		    // Continue only if the File was successfully created
-		    if (photoFile != null) {
-			Uri photoURI = FileProvider.getUriForFile(activity, aplicationId, photoFile);
-			takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-			activity.startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-		    }
-		}
-
+		/* Create a Zxing IntentIntegrator and start the QR code scan */
+		IntentIntegrator integrator = new IntentIntegrator(activity);
+		integrator.setRequestCode(REQUEST_IMAGE_CAPTURE);
+		integrator.setOrientationLocked(false);
+		// title
+		integrator.initiateScan();
 	}
-
-
 
 	static Bitmap encodeAsBitmap(String contents,
 		               BarcodeFormat format,
@@ -121,29 +86,25 @@ public class GodotQRCode extends Godot.SingletonBase {
 
 	public void generateCode(String code) 
 	{
-		// this is a small sample use of the QRCodeEncoder class from zxing
 		try {
-			// generate a 150x150 QR code
 			if (code != null) 
 			{
-			    	Bitmap bm = encodeAsBitmap(code, BarcodeFormat.QR_CODE, codeSize, codeSize);
+			    Bitmap bm = encodeAsBitmap(code, BarcodeFormat.QR_CODE, codeSize, codeSize);
 
 				if(bm != null) {
-					//image_view.setImageBitmap(bm);
-
 					Bitmap imageBitmap = scaleImageKeepAspectRatio(bm);
 					ByteArrayOutputStream baos = new ByteArrayOutputStream();
 					imageBitmap.compress(Bitmap.CompressFormat.PNG, 0, baos);
 					byte[] imageBytes = baos.toByteArray();
 					String imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-					cleanImage = imageString.replace("data:image/png;base64,", "").replace("data:image/jpeg;base64,","");
+					String cleanImage = imageString.replace("data:image/png;base64,", "").replace("data:image/jpeg;base64,","");
 
 					GodotLib.calldeferred(cameraCallbackId, "_on_godotQRCodeGenerated_success", new Object[] { code, cleanImage });
 				}
 			}
 
 		} catch (WriterException e) { 
-			//eek 
+			GodotLib.calldeferred(cameraCallbackId, "_on_godotQRCodeGenerated_error", new Object[] { "Error to generate the QR Code" });
 		}
 	}
 
@@ -160,19 +121,6 @@ public class GodotQRCode extends Godot.SingletonBase {
 		return rotatedBitmap;
 	}
 
-	private File createImageFile() throws IOException {
-		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-		String imageFileName = "PNG_" + timeStamp + "_";
-		File storageDir = activity.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-		File image = File.createTempFile(
-		    imageFileName,  /* prefix */
-		    ".png",         /* suffix */
-		    storageDir      /* directory */
-		);
-		currentPhotoPath = image.getAbsolutePath();
-		return image;
-	}
-
 	static public Godot.SingletonBase initialize (Activity p_activity) {
 		return new GodotQRCode(p_activity);
 	}
@@ -185,6 +133,10 @@ public class GodotQRCode extends Godot.SingletonBase {
 		this.codeSize = _codeSize;
 	}
 
+	public void setTitle(String _title) {
+		this.title = _title;
+	}	
+
 	public void setImageRotated(int _rotatedDegree) {
 		this.degreeRotation = _rotatedDegree;
 	}
@@ -195,10 +147,11 @@ public class GodotQRCode extends Godot.SingletonBase {
 			"scanCode",
 			"generateCode",
 			"setCodeSize",
+			"setTitle",
 			"setImageRotated",
 			"setCallbackId"
 		});
-		activity = p_activity;
+		activity = p_activity;		
 	}
 
 	public static String encodeToBase64(Bitmap image, Bitmap.CompressFormat compressFormat, int quality)
@@ -208,48 +161,25 @@ public class GodotQRCode extends Godot.SingletonBase {
 	    return Base64.encodeToString(byteArrayOS.toByteArray(), Base64.DEFAULT);
 	}
 
-	public static String scanQRImage(Bitmap bMap) {
-	    String contents = null;
-
-	    int[] intArray = new int[bMap.getWidth()*bMap.getHeight()];
-	    //copy pixel data from the Bitmap into the 'intArray' array
-	    bMap.getPixels(intArray, 0, bMap.getWidth(), 0, 0, bMap.getWidth(), bMap.getHeight());
-
-	    LuminanceSource source = new RGBLuminanceSource(bMap.getWidth(), bMap.getHeight(), intArray);
-	    BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-
-	    Reader reader = new MultiFormatReader();
-	    try {
-		Result result = reader.decode(bitmap);
-		contents = result.getText();
-	    }
-	    catch (Exception e) {
-		Log.e("QrTest", "Error decoding barcode", e);
-	    }
-	    return contents;
-	}
-
 	protected void onMainActivityResult(int requestCode, int resultCode, Intent data) {
 
-		if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == activity.RESULT_OK) {
+		if(requestCode != REQUEST_IMAGE_CAPTURE) {
+			super.onMainActivityResult(requestCode, resultCode, data);
+			return;
+		}
 
-			// 
-			Bitmap imageBitmap = BitmapFactory.decodeFile(currentPhotoPath);
+		if(IntentIntegrator.parseActivityResult(resultCode, data) != null) {
+			String qrcode = IntentIntegrator.parseActivityResult(resultCode, data).getContents();
+			if(qrcode == null) {
+				GodotLib.calldeferred(cameraCallbackId, "_on_godotQRCodeScanned_error", new Object[] { "Cancelled", "" });
+			}
+			else
+			{
+				GodotLib.calldeferred(cameraCallbackId, "_on_godotQRCodeScanned_success", new Object[] { qrcode, "" });
+			}
 
-			// Scan code
-			String qrcode = scanQRImage(imageBitmap);
-
-
-			// Return image
-			imageBitmap = scaleImageKeepAspectRatio(imageBitmap);
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			imageBitmap.compress(Bitmap.CompressFormat.PNG, 0, baos);
-			byte[] imageBytes = baos.toByteArray();
-			String imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-			cleanImage = imageString.replace("data:image/png;base64,", "").replace("data:image/jpeg;base64,","");
-
-			GodotLib.calldeferred(cameraCallbackId, "_on_godotQRCodeScanned_success", new Object[] { qrcode, cleanImage });
+		} else {
+			super.onMainActivityResult(requestCode, resultCode, data);
 		}
 	}
-
 }

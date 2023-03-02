@@ -1,54 +1,28 @@
-Esse módulo foi feito para a Godot 3.2
+Esse módulo foi feito para a Godot 3.2 - talvez funcione na versão 3.5 mas não foi testado
 
 
 ### Como usar
 ----------
 
-- Coloque essa pasta ```godotQRCode``` dentro do seu caminho ```res://android/```
-- Abra as configurações do seu projeto -> Android -> Modules, e acrescente:
+1 - Clique no menu: Project > Install Android Build Template
+2 - Edite o arquivo: ```android\build\gradle\wrapper\gradle-wrapper.properties``` e altere a distribuição para: ```distributionUrl=https\://services.gradle.org/distributions/gradle-6.7.1-all.zip```
+3 - Edite o arquivo: ```android\build\config.gradle``` e coloque o minSdk para 24
+4 - Edite o arquivo: ```android\build\gradle.config``` e adicione as duas linhas abaixo no fim do arquivo
+
+```
+android.useAndroidX=true
+android.enableJetifier=true
+```
+
+5 - Coloque essa pasta ```godotQRCode``` dentro do seu caminho ```res://android/```
+6 - Abra as configurações do seu projeto -> Android -> Modules, e acrescente:
 
 ```
 org/godotengine/godot/godotQRCode
 ```
 
+7 - Dentro do diretório do módulo "godotQRCode/src" alterar onde consta ```com.thiagobruno.godotqrcode``` pelo id da sua aplicação!
 
-Video com a explicação completa no meu canal do Youtube: 
-- https://www.youtube.com/watch?v=Kq5MisDO26s
-
-[![Video demonstração](https://img.youtube.com/vi/Kq5MisDO26s/0.jpg)](https://www.youtube.com/watch?v=Kq5MisDO26s)
-
-
-
-### Configurações
--------------
-
-- Dentro do diretório do módulo "godotQRCode/src" alterar o arquivo "godotQRCode.java" onde consta ```com.thiagobruno.godotqrcode``` pelo id da sua aplicação!
-
-```
-...
-private String aplicationId = "com.thiagobruno.godotqrcode";
-...
-```
-
-------
-
-- Dentro do diretório do módulo "godotQRCode" alterar o arquivo "AndroidManifest.cong" onde consta ```com.thiagobruno.godotqrcode``` pelo id da sua aplicação!
-
-```
-...
-android:authorities="com.thiagobruno.godotqrcode"
-...
-```
-
-------
-
-- Dentro do diretório do módulo "godotQRCode/res/xml" alterar o arquivo "file_paths.xml" onde consta ```com.thiagobruno.godotqrcode``` pelo id da sua aplicação!
-
-```
-...
-<external-path name="my_images" path="Android/data/com.thiagobruno.godotqrcode/files/Pictures" />
-...
-```
 
 
 ### Como usar
@@ -57,16 +31,14 @@ android:authorities="com.thiagobruno.godotqrcode"
 
 ### TODO
 -------------
-- Preview camera inside godot
-- Preview with mask
-- Crop and adjust de captured qrcode
+- Alterar o título que aparece na camera
 
 ### Exportar
 -------------
-- Permissões necessárias: CAMERA, READ/WRITE _EXTERNAL_STORAGE
+- Permissões necessárias: CAMERA
 
 ### ...
-Vai utilizar esse código de forma comercial? Fique tranquilo pode usar de forma livre e sem precisar mencionar nada, claro que vou ficar contente se pelo menos lembrar da ajuda e compartilhar com os amigos, rs. Caso sinta no coração, considere me pagar um cafezinho :heart: -> https://ko-fi.com/thiagobruno
+Vai utilizar esse código de forma comercial? Fique tranquilo pode usar de forma livre e sem precisar mencionar nada, claro que vou ficar contente se pelo menos lembrar da ajuda e compartilhar com os amigos, rs. Caso sinta no coração, considere me pagar um cafezinho :heart: -> https://ko-fi.com/thsbruno
 
 
 
