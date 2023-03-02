@@ -14,14 +14,27 @@ android.useAndroidX=true
 android.enableJetifier=true
 ```
 
-5 - Coloque essa pasta ```godotQRCode``` dentro do seu caminho ```res://android/```
-6 - Abra as configurações do seu projeto -> Android -> Modules, e acrescente:
+5 - Edite o arquivo: ```android\build\build.gradle``` e adicione as linhas compileOptions abaixo dentro da chave android
+
+```
+android {
+...
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+...
+}
+```
+
+6 - Coloque essa pasta ```godotQRCode``` dentro do seu caminho ```res://android/```
+7 - Abra as configurações do seu projeto -> Android -> Modules, e acrescente:
 
 ```
 org/godotengine/godot/godotQRCode
 ```
 
-7 - Dentro do diretório do módulo "godotQRCode/src" alterar onde consta ```com.thiagobruno.godotqrcode``` pelo id da sua aplicação!
+8 - Dentro do diretório do módulo "godotQRCode/src" alterar onde consta ```com.thiagobruno.godotqrcode``` pelo id da sua aplicação!
 
 
 
