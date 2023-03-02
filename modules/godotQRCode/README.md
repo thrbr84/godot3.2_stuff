@@ -7,7 +7,7 @@ Esse módulo foi feito para a Godot 3.2 - talvez funcione na versão 3.5 mas nã
 1 - Clique no menu: Project > Install Android Build Template
 2 - Edite o arquivo: ```android\build\gradle\wrapper\gradle-wrapper.properties``` e altere a distribuição para: ```distributionUrl=https\://services.gradle.org/distributions/gradle-6.7.1-all.zip```
 3 - Edite o arquivo: ```android\build\config.gradle``` e coloque o minSdk para 24
-4 - Edite o arquivo: ```android\build\gradle.config``` e adicione as duas linhas abaixo no fim do arquivo
+4 - Edite o arquivo: ```android\build\gradle.properties``` e adicione as duas linhas abaixo no fim do arquivo
 
 ```
 android.useAndroidX=true
