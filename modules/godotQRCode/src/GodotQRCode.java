@@ -44,6 +44,7 @@ public class GodotQRCode extends Godot.SingletonBase {
 		integrator.setOrientationLocked(false);
 		// title
 		integrator.initiateScan();
+		integrator.setPrompt("Scan QR Code");
 	}
 
 	static Bitmap encodeAsBitmap(String contents,
