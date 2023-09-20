@@ -1,4 +1,7 @@
-# Compilar Módulo: Godot 3.2.1
+# Godot Stuff
+
+
+### Compilar Módulo: Godot 3.2.1
 
 ### Explicação
 Video com a explicação completa no meu canal do Youtube: 
@@ -71,6 +74,28 @@ Alguns módulos foram customizados e modificados baseados nos trabalhos dos auto
 - Rewarded Video: ca-app-pub-3940256099942544/5224354917
 - Native Advanced: ca-app-pub-3940256099942544/2247696110
 - Native Advanced Video: ca-app-pub-3940256099942544/1044960115
+
+----------
+
+# Mais...
+
+- [Grass Path2D](https://github.com/thrbr84/godot_TBP_GrassPath2D)
+- [Analog Controller](https://github.com/thrbr84/godot_analogcontroller)
+- [Godot Laravel](https://github.com/thrbr84/godot_laravel)
+- [Bouyancy Water Objetc](https://github.com/thrbr84/godot_buoyancyWaterObject)
+- [Drag N Drop / Inventary](https://github.com/thrbr84/godot_dragndrop)
+- [Accelerometer](https://github.com/thrbr84/godot_accelerometer)
+- [INAPP](https://github.com/thrbr84/godot_inapp)
+- [TextureRect URL](https://github.com/thrbr84/godot_texturerecturl)
+- [Locale](https://github.com/thrbr84/godot_locale)
+- [Save Local](https://github.com/thrbr84/godot_savelocal)
+- [Countdown](https://github.com/thrbr84/godot3.2_countdown)
+- [Lollipop Game](https://github.com/thrbr84/godot_lollipop)
+- [Lançamento Obliquo](https://github.com/thrbr84/godot_lancamentoobliquo)
+- [Compilar Modulo](https://github.com/thrbr84/godot3.1_compilarmodulo)
+- [8 Directions movement pre-render](https://github.com/thrbr84/godot-8-directions-movement)
+
+
 
 ### ...
 Vai utilizar esse código de forma comercial? Fique tranquilo pode usar de forma livre e sem precisar mencionar nada, claro que vou ficar contente se pelo menos lembrar da ajuda e compartilhar com os amigos, rs. Caso sinta no coração, considere me pagar um cafezinho :heart: -> https://ko-fi.com/thiagobruno
